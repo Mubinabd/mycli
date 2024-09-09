@@ -54,8 +54,8 @@ func Convert(rates []Rate, from, to string, amount float64) (float64, error) {
 		return 0, fmt.Errorf("conversion rate from %s to %s not found", from, to)
 	}
 
-	convertedAmount := amount * (toSum / fromSum)
-	return convertedAmount, nil
+	conAmount := amount * (toSum / fromSum)
+	return conAmount, nil
 }
 
 func ListRates(rates []Rate) {
