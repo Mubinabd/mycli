@@ -63,11 +63,11 @@ func Convert(rates []Rate, from, to string, amount float64) (float64, error) {
 }
 func ListRates(rates []Rate) {
 	table := t.NewWriter(os.Stdout)
-	headers := []string{"Currency", "Central Bank Price (CBPrice)",  "Code", "Date"}
+	headers := []string{"Currency", "Central Bank Price (CBPrice)", "Date", "Code"}
 	table.SetHeader(headers)
 
 	for _, rate := range rates {
-		table.Append([]string{rate.Title, fmt.Sprintf("%.2f", rate.CBPrice), rate.Code, rate.Date})
+		table.Append([]string{rate.Title, fmt.Sprintf("%.2f", rate.CBPrice), rate.Date, rate.Code})
 	}
 
 	table.SetBorder(true)
@@ -76,10 +76,10 @@ func ListRates(rates []Rate) {
 	table.SetRowSeparator("-")
 
 	table.SetHeaderColor(
-		t.Colors{t.FgHiMagentaColor, t.Bold},
-		t.Colors{t.FgHiMagentaColor, t.Bold},
-		t.Colors{t.FgHiMagentaColor, t.Bold},
-		t.Colors{t.FgHiMagentaColor, t.Bold},
+		t.Colors{t.FgHiWhiteColor, t.Bold},
+		t.Colors{t.FgHiCyanColor, t.Bold},
+		t.Colors{t.FgHiGreenColor, t.Bold},
+		t.Colors{t.FgHiBlueColor, t.Bold},
 	)
 
 	table.SetColumnColor(
@@ -130,6 +130,8 @@ func main() {
 		os.Exit(1)
 	}
 
+	fmt.Printf("Conversion result: %.2f %s to %s\n", amount, fromCurrency, toCurrency)
+
 	table := t.NewWriter(os.Stdout)
 	table.SetHeader([]string{"Amount", "From Currency", "To Currency", "Converted Amount"})
 
@@ -157,7 +159,7 @@ func main() {
 		t.Colors{t.FgHiRedColor},
 	)
 
-
+	table.Render()
 
 	color.Cyan("\nThank you for using the Currency Converter!\n")
 }

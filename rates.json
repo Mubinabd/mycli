@@ -190,13 +190,5 @@
         "nbu_buy_price": "12680.00",
         "nbu_cell_price": "12740.00",
         "date": "09\/08\/2024 06:00:01 pm"
-    },
-    {
-        "title": "Uzbekistan Sum",
-        "code": "UZS",
-        "cb_price": "10364.00",
-        "nbu_buy_price": null,
-        "nbu_cell_price": null,
-        "date": "09\/08\/2024 06:00:01 pm"
     }
 ]
