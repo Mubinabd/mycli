@@ -61,13 +61,14 @@ func Convert(rates []Rate, from, to string, amount float64) (float64, error) {
 	convertedAmount := amount * (toRate / fromRate)
 	return convertedAmount, nil
 }
+
 func ListRates(rates []Rate) {
 	table := t.NewWriter(os.Stdout)
-	headers := []string{"Currency", "Central Bank Price (CBPrice)",  "Code", "Date"}
+	headers := []string{"Currency", "Central Bank Price (CBPrice)", "Code", "Date"}
 	table.SetHeader(headers)
 
 	for _, rate := range rates {
-		table.Append([]string{rate.Title, fmt.Sprintf("%.2f", rate.CBPrice), rate.Code,rate.Date})
+		table.Append([]string{rate.Title, fmt.Sprintf("%.2f", rate.CBPrice), rate.Code, rate.Date})
 	}
 
 	table.SetBorder(true)
