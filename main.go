@@ -94,12 +94,12 @@ func main() {
 
 	var rootCmd = &cobra.Command{
 		Use:   "currency_converter",
-		Short: "A CLI tool to convert currency using exchange rates",
+		Short: "convert currency using exchange rates",
 	}
 
 	var listCmd = &cobra.Command{
 		Use:   "list",
-		Short: "List all available conversion rates",
+		Short: "List all conversion rates",
 		Run: func(cmd *cobra.Command, args []string) {
 			rates, err := fetchRates(ratesURL)
 			if err != nil {
