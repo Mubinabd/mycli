@@ -36,16 +36,16 @@ func fetchRates(url string) ([]Rate, error) {
 }
 
 func Convert(rates []Rate, from, to string, amount float64) (float64, error) {
-	var fromRate, toRate float64
+	var fromConvert, toConvert float64
 	var foundFrom, foundTo bool
 
 	for _, rate := range rates {
 		if rate.Code == from {
-			fromRate = rate.CBPrice
+			fromConvert = rate.CBPrice
 			foundFrom = true
 		}
 		if rate.Code == to {
-			toRate = rate.CBPrice
+			toConvert = rate.CBPrice
 			foundTo = true
 		}
 	}
@@ -54,7 +54,7 @@ func Convert(rates []Rate, from, to string, amount float64) (float64, error) {
 		return 0, fmt.Errorf("conversion rate from %s to %s not found", from, to)
 	}
 
-	convertedAmount := amount * (toRate / fromRate)
+	convertedAmount := amount * (toConvert / fromConvert)
 	return convertedAmount, nil
 }
 
