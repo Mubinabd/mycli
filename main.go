@@ -63,11 +63,11 @@ func Convert(rates []Rate, from, to string, amount float64) (float64, error) {
 }
 func ListRates(rates []Rate) {
 	table := t.NewWriter(os.Stdout)
-	headers := []string{"Currency", "Central Bank Price (CBPrice)", "Date", "Code"}
+	headers := []string{"Currency", "Central Bank Price (CBPrice)",  "Code", "Date"}
 	table.SetHeader(headers)
 
 	for _, rate := range rates {
-		table.Append([]string{rate.Title, fmt.Sprintf("%.2f", rate.CBPrice), rate.Date, rate.Code})
+		table.Append([]string{rate.Title, fmt.Sprintf("%.2f", rate.CBPrice), rate.Code,rate.Date})
 	}
 
 	table.SetBorder(true)
@@ -76,10 +76,10 @@ func ListRates(rates []Rate) {
 	table.SetRowSeparator("-")
 
 	table.SetHeaderColor(
-		t.Colors{t.FgHiWhiteColor, t.Bold},
-		t.Colors{t.FgHiCyanColor, t.Bold},
-		t.Colors{t.FgHiGreenColor, t.Bold},
-		t.Colors{t.FgHiBlueColor, t.Bold},
+		t.Colors{t.FgHiMagentaColor, t.Bold},
+		t.Colors{t.FgHiMagentaColor, t.Bold},
+		t.Colors{t.FgHiMagentaColor, t.Bold},
+		t.Colors{t.FgHiMagentaColor, t.Bold},
 	)
 
 	table.SetColumnColor(
@@ -147,16 +147,16 @@ func main() {
 	table.SetColumnSeparator("|")
 	table.SetRowSeparator("-")
 	table.SetHeaderColor(
-		t.Colors{t.FgHiWhiteColor, t.Bold},
-		t.Colors{t.FgHiCyanColor, t.Bold},
-		t.Colors{t.FgHiCyanColor, t.Bold},
-		t.Colors{t.FgHiGreenColor, t.Bold},
+		t.Colors{t.FgHiMagentaColor, t.Bold},
+		t.Colors{t.FgHiMagentaColor, t.Bold},
+		t.Colors{t.FgHiMagentaColor, t.Bold},
+		t.Colors{t.FgHiMagentaColor, t.Bold},
 	)
 	table.SetColumnColor(
-		t.Colors{t.FgHiYellowColor},
-		t.Colors{t.FgHiMagentaColor},
+		t.Colors{t.FgHiWhiteColor},
 		t.Colors{t.FgHiBlueColor},
-		t.Colors{t.FgHiRedColor},
+		t.Colors{t.FgHiGreenColor},
+		t.Colors{t.FgHiCyanColor},
 	)
 
 	table.Render()
