@@ -34,7 +34,6 @@ func fetchRates(url string) ([]Rate, error) {
 	}
 	return rates, nil
 }
-
 func Convert(rates []Rate, from, to string, amount float64) (float64, error) {
 	var fromSum, toSum float64
 	var foundFrom, foundTo bool
@@ -54,9 +53,10 @@ func Convert(rates []Rate, from, to string, amount float64) (float64, error) {
 		return 0, fmt.Errorf("conversion rate from %s to %s not found", from, to)
 	}
 
-	conAmount := amount * (toSum * fromSum)
+	conAmount := amount * (fromSum / toSum)
 	return conAmount, nil
 }
+
 
 func ListRates(rates []Rate) {
 	table := t.NewWriter(os.Stdout)
